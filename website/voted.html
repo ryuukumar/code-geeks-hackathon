@@ -15,7 +15,8 @@
 			<img src="check.png" width="15%">
 			<h1>Thanks for voting!</h1>
 		<br>
-		Your vote has been recorded.</center>
+		Your vote has been recorded.<br><br><br>
+		<button onclick="goback()">Go Back</button></center>
 
 		<br><br><br><br><br>
 		<hr>
@@ -29,11 +30,11 @@
 		</center>
 	</footer>
 
-<!--	<script>
-		const urlParams = new URLSearchParams(window.location.search);
-		const votee = urlParams.get('votee');
-		document.getElementById("candidate").innerText = votee;
-	</script> -->
+	<script>
+		function goback() {
+			window.location.replace("./voting.html")
+		}
+	</script>
 </div>
 </body>
 </html>

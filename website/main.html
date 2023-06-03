@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>MONITOR</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body><div class="wrapper">
+	<header class="head">
+		Tempest National Voting System
+	</header>
+	<div class="content">
+		<br><br><br>
+		<center>
+			This webpage is strictly for monitoring purposes.
+		</center>
+		<br><br><br><br><br>
+		<hr>
+		<br><br><br><br><br>
+	</div>
+	<footer>
+		<center>
+		<div class="page-footer">
+			Tempest National Voting System<br>&#169; Team russian roulette 2023
+		</div>
+	</center>
+	</footer>
+
+	<script>
+		candidates = ['Gikhil Nupta', 'Kaditya Umar', 'Dutkarsh Iwakar']
+		htmldata = ""
+		
+		var resultmonitor = window.open("results.html")
+		var votewin = window.open("voting.html")
+
+		// Define a function to be called from the child window
+		function parentFunction(message) {
+			console.log("Vote registed for:", message);
+			resultmonitor.postMessage(message)
+		}
+
+		// Listen for messages from the child window
+		window.addEventListener("message", function(event) {
+		if (event.source === votewin) {
+			// Call the parent function with the received message
+			parentFunction(event.data);
+		}
+		});
+	</script></div>
+</body>
+</html>

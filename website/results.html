@@ -54,6 +54,42 @@
 		tabletext += "</tr>"
 
 		document.getElementById("results-table").innerHTML = tabletext
+
+		function upatePolls(message) {
+			for (j in candidates) {
+				if (candidates[j]==message) {
+					results[j]++
+				}
+			}
+			var max = results[0]
+			for (i in results) {
+				if (results[i] > max) {
+					max = results[i]
+				}
+			}
+			tabletext = "<tr>"
+			for (i in candidates) {
+				tabletext += ("<th>" + candidates[i] + "</th>")
+			}
+			tabletext += "</tr><tr>"
+			for (i in results) {
+				tabletext += ("<td align=center style=\"font-size:36px\">" + results[i])
+				if (results[i] == max && max != 0) {
+					tabletext += " <img src='check.png' width=15%>"
+				}
+				tabletext += "</td>"
+			}
+			tabletext += "</tr>"
+
+			document.getElementById("results-table").innerHTML = tabletext
+		}
+
+		// Listen for messages from the child window
+		window.addEventListener("message", function(event) {
+			// Call the parent function with the received message
+			console.log("Receive vote for:", event.data)
+			upatePolls(event.data);
+		});
 	</script>
 </div>
 </body>
