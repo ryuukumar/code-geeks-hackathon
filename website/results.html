@@ -14,6 +14,7 @@
 		<center>
 			<h1>Live counter</h1><br><br><hr><br><br>
 			<table id="results-table"></table>
+			<br><br>
 		</center>
 
 		<br><br><br><br><br>
@@ -30,7 +31,7 @@
 
 	<script>
 		var candidates = ['Gikhil Nupta', 'Kaditya Umar', 'Dutkarsh Iwakar']
-		var results = [5, 4, 6]
+		var results = [0, 0, 0]
 
 		var max = results[0]
 		for (i in results) {
@@ -56,6 +57,7 @@
 		document.getElementById("results-table").innerHTML = tabletext
 
 		function upatePolls(message) {
+
 			for (j in candidates) {
 				if (candidates[j]==message) {
 					results[j]++
