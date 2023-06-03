@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Thanks for Voting</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body><div class="wrapper">
+	<header class="head">
+		Tempest National Voting System
+	</header>
+	<div class="content">
+		<br><br><br>
+		<center>
+			<h1>Live counter</h1><br><br><hr><br><br>
+			<table id="results-table"></table>
+		</center>
+
+		<br><br><br><br><br>
+		<hr>
+		<br><br><br><br><br>
+	</div>
+	<footer>
+		<center>
+		<div class="page-footer">
+			Tempest National Voting System<br>&#169; Team russian roulette 2023
+		</div>
+		</center>
+	</footer>
+
+	<script>
+		var candidates = ['Gikhil Nupta', 'Kaditya Umar', 'Dutkarsh Iwakar']
+		var results = [5, 4, -10]
+
+		var max = results[0]
+		for (i in results) {
+			if (results[i] > max) {
+				max = results[i]
+			}
+		}
+
+		tabletext = "<tr>"
+		for (i in candidates) {
+			tabletext += ("<th>" + candidates[i] + "</th>")
+		}
+		tabletext += "</tr><tr>"
+		for (i in results) {
+			tabletext += ("<td align=center style=\"font-size:36px\">" + results[i])
+			if (results[i] == max && max != 0) {
+				tabletext += " <img src='check.png' width=15%>"
+			}
+			tabletext += "</td>"
+		}
+		tabletext += "</tr>"
+
+		document.getElementById("results-table").innerHTML = tabletext
+	</script>
+</div>
+</body>
+</html>

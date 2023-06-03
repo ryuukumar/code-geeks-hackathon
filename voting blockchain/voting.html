@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Voting Page</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body><div class="wrapper">
+	<header class="head">
+		Tempest National Voting System
+	</header>
+	<div class="content">
+		<br><br><br>
+		<div id="id-section">
+			<center><h1>Enter your personal details</h1>
+			<br>
+			<span id="detailswarn"></span>
+			<input placeholder="First Name" id="firstname"><br>
+			<input placeholder="Last Name" id="lastname"><br>
+			<input placeholder="ID Card Number" id="idcard"><br><br>
+			<button onclick="regdets()">Submit</button>
+			</center>
+			</div>
+		<div id="vote-section" style="display:none">
+		<center><h1>Cast your vote here!</h1>
+		<br>
+		<div id="ballot"></div></center>
+		</div>
+
+		<br><br><br><br><br>
+		<hr>
+		<br><br><br><br><br>
+	</div>
+	<footer>
+		<center>
+		<div class="page-footer">
+			Tempest National Voting System<br>&#169; Team russian roulette 2023
+		</div>
+	</center>
+	</footer>
+
+	<script>
+		import {ethers} from "ethers"
+
+		candidates = ['Gikhil Nupta', 'Kaditya Umar', 'Dutkarsh Iwakar']
+		htmldata = ""
+		var voterdeets = {
+			firstname: "",
+			lastname: "",
+			idcard: "",
+			votedfor: ""
+		}
+
+		function regdets() {
+			var firstname = document.getElementById("firstname").value
+			var lastname = document.getElementById("lastname").value
+			var idcard = document.getElementById("idcard").value
+			//console.log(firstname)
+			if (idcard === "" || lastname === "" || firstname === "") {
+				document.getElementById("detailswarn").innerHTML = "Not all details are entered!<br><br>"
+			} else {
+				document.getElementById("detailswarn").innerHTML = ""
+				voterdeets.firstname = firstname
+				voterdeets.lastname = lastname
+				voterdeets.idcard = idcard
+				document.getElementById("vote-section").style.display = "block"
+				document.getElementById("id-section").style.display = "none"
+			}
+		}
+
+		for (candidate in candidates) {
+			htmldata += ("<button onclick=\"voted(\'" + candidates[candidate] + "\')\">" + candidates[candidate] + "</button><br>")
+		}
+
+		document.getElementById("ballot").innerHTML = htmldata
+
+		function voted(votee) {
+			const params = {
+				votee: votee
+			}
+			voterdeets.votedfor = votee
+			window.location.href = ("./voted.html")
+		}
+	</script></div>
+</body>
+</html>
